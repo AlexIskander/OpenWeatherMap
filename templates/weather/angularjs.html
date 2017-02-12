@@ -1,0 +1,29 @@
+         {% verbatim %}
+
+
+                 <table ng-controller='WeatherController' class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th>ДАТА</th>
+                <th>Температура</th>
+                <th>Ветер</th>
+                <th>Облачность</th>
+                <th>Давление</th>
+                <th>Словесное описание</th>
+            </tr>
+               <tr ng-repeat="x in result " ng-class-odd="grey">
+                  <td >{{ x.date|date }}</td>
+                   <td><p class="text-center">
+                       <span class="btn btn-danger">{{ x.max_temp }}c&deg;</span>
+                       <span class="btn btn-info">{{ x.min_temp }}c&deg;</span>
+                       </p>
+                   </td>
+                   <td>{{ x.wind }}м/c</td>
+                    <td>{{ x.clouds }}%</td>
+                    <td>{{ x.pressure }}hpa</td>
+                    <td><img src="/static/images/{{x.icon}}.png" alt=""> <b>{{ x.description }}</b></td>
+
+                </tr>
+              </table>
+
+
+        {% endverbatim %}

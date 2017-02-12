@@ -1,0 +1,36 @@
+  {% verbatim %}
+                <div ng-controller='HelloController'>
+                    <input ng-model='greeting.text'>
+                    <p>{{greeting.text}}, World</p>
+                </div>
+                <div ng-controller='TextController' >
+                     <p>{{someText.message}}</p>
+                </div>
+
+
+
+  <div ng-controller="graphController">
+
+      <div class="chart" style="width:{{width}}px; height:{{height}}px;">
+
+          <!-- Метки -->
+          <div class="y" style="width:{{height}}px;">{{yAxis}}</div>
+          <div class="x">{{xAxis}}</div>
+
+          <!-- Данные -->
+          <svg style="width:{{width}}px; height:{{height}}px;">
+
+              <line ng-repeat="line in data"
+                    x1="{{$index / data.length * width }}"
+                    y1="{{data[$index - 1].value / max * height}}"
+                    x2="{{($index + 1) / data.length * width}}"
+                    y2="{{line.value / max * height}}">
+              </line>
+
+          </svg>
+
+      </div>
+
+  </div>
+
+  {% endverbatim %}
