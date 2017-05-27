@@ -39,24 +39,17 @@ class WeatherTwoWeeks(models.Model):
     id_city = models.ForeignKey(
         City, to_field='city_id',
         related_name='weather', verbose_name=_(u"City id"))
-    max_temp = models.DecimalField(
-        max_digits=8, decimal_places=2, verbose_name=_(u"Max temperature"))
-    min_temp = models.DecimalField(
-        max_digits=8, decimal_places=2, verbose_name=_(u"Min temperature"))
+    max_temp = models.SmallIntegerField(verbose_name=_(u"Max temperature"))
+    min_temp = models.SmallIntegerField(verbose_name=_(u"Min temperature"))
     description = models.CharField(
         max_length=40, verbose_name=_(u"Weather condition"))
     icon = models.CharField(max_length=20, verbose_name=_(u"Weather icon"))
-    wind = models.DecimalField(
-        max_digits=8, decimal_places=0, verbose_name=_(u"Wind speed"))
-    pressure = models.DecimalField(
-        max_digits=4, decimal_places=0, verbose_name=_(u"Pressure, hpa"))
-    humidity = models.DecimalField(
-        max_digits=3, decimal_places=0, verbose_name=_(u'Humidity'))
-    clouds = models.DecimalField(
-        max_digits=3, decimal_places=0, verbose_name=_(u"Cloudiness, %"))
+    wind = models.SmallIntegerField(verbose_name=_(u"Wind speed"))
+    pressure = models.SmallIntegerField(verbose_name=_(u"Pressure, hpa"))
+    humidity = models.SmallIntegerField(verbose_name=_(u'Humidity'))
+    clouds = models.SmallIntegerField(verbose_name=_(u"Cloudiness, %"))
     date = models.DateTimeField(verbose_name=_(u"Date"))
-    position = models.DecimalField(
-        max_digits=3, decimal_places=0, verbose_name=_(u"Position for day"))
+    position = models.SmallIntegerField(verbose_name=_(u"Position for day"))
 
     def __unicode__(self):
         return '%d: %s' % (self.pressure, self.description,)
@@ -78,10 +71,9 @@ class HourlyWeather(models.Model):
     """
     id_city = models.ForeignKey(City, to_field='city_id')
     date = models.DateTimeField(verbose_name=_(u'Date time'))
-    temp = models.DecimalField(max_digits=2, decimal_places=0)
+    temp = models.SmallIntegerField()
     icon = models.CharField(max_length=8, verbose_name=_(u'Icon'))
-    position = models.DecimalField(
-        max_digits=3, decimal_places=0, verbose_name=_(u"Position for day"))
+    position = models.SmallIntegerField(verbose_name=_(u"Position for day"))
 
     def __unicode__(self):
         return '%d' % self.temp
