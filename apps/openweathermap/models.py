@@ -13,8 +13,7 @@ class City(models.Model):
     """City with a unique identifier and its coordinates to show
     temperature."""
     name = models.CharField(max_length=40, verbose_name=_(u"City name"))
-    city_id = models.DecimalField(
-        max_digits=10, decimal_places=0,
+    city_id = models.PositiveIntegerField(
         verbose_name=_(u"City ID"), unique=True)
     lon = models.DecimalField(
         max_digits=12, decimal_places=8, verbose_name=_(u"Long"))
