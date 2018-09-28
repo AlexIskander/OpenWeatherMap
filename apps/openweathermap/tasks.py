@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import os
 import json
 import urllib2
 
@@ -10,7 +11,7 @@ from .models import WeatherTwoWeeks, City, HourlyWeather
 
 host_api = 'http://api.openweathermap.org/data/2.5/forecast'
 city_ = '703448'
-api_pid = '&APPID=1a9341eefdb6f3b76b78fe16646'
+api_pid = '&APPID=%s' % os.environ["TOKEN"] 
 
 api_full = '%s/daily?id=%s&cnt=14&units=metric&lang=ru%s' % (
     host_api, city_, api_pid)
