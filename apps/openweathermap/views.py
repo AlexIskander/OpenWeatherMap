@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 from datetime import timedelta
 from datetime import datetime as D
+from django.utils import timezone
 from django.shortcuts import get_object_or_404 as get_obj
 from django.shortcuts import render, redirect
 
@@ -19,7 +20,7 @@ from .models import WeatherTwoWeeks, City, HourlyWeather
 
 def date_diapason(namber=2):
     """Get date diapason."""
-    today = D.today()
+    today = timezone.now()
     delta = timedelta(namber)
     return today, today + delta
 
