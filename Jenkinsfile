@@ -2,7 +2,7 @@ node {
     checkout scm
     def testImage = docker.build("test-image", ".") 
 
-    testImage.inside {
-        sh 'make test'
+    runImage.inside {
+        sh 'make run'
     }
 }
