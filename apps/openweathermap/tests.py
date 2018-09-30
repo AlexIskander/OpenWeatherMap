@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .midels import City
+from .models import City
 # Create your tests here.
 
 
