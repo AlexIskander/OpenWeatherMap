@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-COPY ./OpenWeatherMap  /opt/OpenWeatherMap
+COPY ./  /opt/OpenWeatherMap
 
 
 RUN apt-get update; apt-get -qy install python-pip; \
