@@ -3,8 +3,8 @@
 set -e
 
 cd $WORKSPACE/terraform
-/home/alex/softserve/docker_work/terraform refresh
-/home/alex/softserve/docker_work/terraform init
-/home/alex/softserve/docker_work/terraform plan --out myplan
-/home/alex/softserve/docker_work/terraform apply "myplan"
-/home/alex/softserve/docker_work/terraform show
+/home/vagrant/terraform refresh
+/home/vagrant/terraform init
+/home/vagrant/terraform plan --out myplan
+/home/vagrant/terraform apply "myplan"
+/home/vagrant/terraform show
