@@ -6,6 +6,6 @@ node {
         sh './manage.py test openweathermap'
     }
 
-    stage name: 'TF Plan'
+    stage name: 'Plan and Deploy'
        sh "./prepare-infra.sh" 
  }
