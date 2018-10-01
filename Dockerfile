@@ -1,16 +1,17 @@
-FROM ubuntu:16.04
+FROM alpine:3.7
 
 COPY ./  /opt/OpenWeatherMap
 
 
-RUN apt-get update; apt-get -qy install python-pip; \
-    useradd -M -s /bin/bash userapp ; \
-    pip install -r /opt/OpenWeatherMap/requirements.txt; \
-    python /opt/OpenWeatherMap/manage.py migrate; \
-    chown -R userapp: /opt/OpenWeatherMap
+RUN  apk add --no-cache python \
+     python-dev \
+     py-pip \
+     build-base \
+     git \
+     && pip install -r /opt/OpenWeatherMap/requirements.txt \
+     && python /opt/OpenWeatherMap/manage.py migrate 
 
 
-USER userapp
- 
-CMD /opt/OpenWeatherMap/run.sh
+EXPOSE 8888 
+CMD python /opt/OpenWeatherMap/manage.py runserver 0.0.0.0:8888
 
