@@ -44,7 +44,7 @@ resource "aws_security_group" "instance" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "my_key"
-  public_key = "${file(/home/alex/.ssh/id_rsa.pub")}"
+  public_key = "${file("/home/alex/.ssh/id_rsa.pub")}"
 }
 
 output "public_ip" {
