@@ -1,5 +1,6 @@
 provider "aws" {
   region = "eu-central-1"
+  shared_credentials_file = "/home/alex/softserve/docker_work/aws/credentials"
 }
 
 resource "aws_instance" "example" {
