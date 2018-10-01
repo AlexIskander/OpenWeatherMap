@@ -6,8 +6,6 @@ node {
         sh './manage.py test openweathermap'
     }
 
-    stage name: 'TF Plan' 
-       sh '/home/alex/softserve/docker_work/terraform init terraform/'
-       sh '/home/alex/softserve/docker_work/terraform plan terraform/'
-       sh '/home/alex/softserve/docker_work/terraform aplly terraform/'
+    stage name: 'TF Plan'
+       sh "prepare-infra.sh" 
  }
