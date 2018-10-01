@@ -7,6 +7,6 @@ node {
     }
 
     stage name: 'TF Plan' 
-       sh 'terraform init'
-       sh 'terraform plan -out myplan'
+       sh '/home/alex/softserve/docker_work/terraform init'
+       sh '/home/alex/softserve/docker_workterraform plan -out myplan'
  }
