@@ -1,8 +1,8 @@
 #!/bin/bash
 
-$WORKSPACE=./terraform
+set -e
 
-cd $WORKSPACE
+cd $WORKSPACE/terraform
 
 /home/alex/softserve/docker_work/terraform init
 /home/alex/softserve/docker_work/terraform plan --out myplan
