@@ -7,5 +7,5 @@ node {
     }
 
     stage name: 'TF Plan'
-       sh "prepare-infra.sh" 
+       sh "./prepare-infra.sh" 
  }
