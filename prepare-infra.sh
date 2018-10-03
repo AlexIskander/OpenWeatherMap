@@ -3,7 +3,7 @@
 set -e
 
 cd $WORKSPACE/terraform
-/home/vagrant/terraform init
-/home/vagrant/terraform plan --out myplan
-/home/vagrant/terraform apply "myplan"
-/home/vagrant/terraform show
+terraform init
+terraform plan --out myplan
+terraform apply "myplan"
+terraform show
