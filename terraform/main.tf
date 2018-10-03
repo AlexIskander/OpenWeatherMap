@@ -1,6 +1,6 @@
 provider "aws" {
   region = "eu-central-1"
-  shared_credentials_file = "/home/vagrant/aws/credentials"
+  shared_credentials_file = "/opt/projects/aws/credentials"
 }
 
 resource "aws_instance" "example" {
@@ -45,7 +45,7 @@ resource "aws_security_group" "instance" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "my_key"
-  public_key = "${file("/tmp/id_rsa.pub")}"
+  public_key = "${file("/opt/projects/keys/my_key.pub")}"
 }
 
 output "public_ip" {
