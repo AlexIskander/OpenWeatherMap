@@ -7,7 +7,7 @@ resource "aws_instance" "example" {
   ami = "ami-0f5dbc86dd9cbf7a8"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
-  key_name = "${aws_key_pair.my_key.key_name}"
+  key_name = "${aws_key_pair.work_key.key_name}"
 
   user_data = <<-EOF
               #!/bin/bash
@@ -43,8 +43,8 @@ resource "aws_security_group" "instance" {
 }
 }
 
-resource "aws_key_pair" "my_key" {
-  key_name   = "my_key"
+resource "aws_key_pair" "work_key" {
+  key_name   = "work_key"
   public_key = "${file("/opt/projects/keys/my_key.pub")}"
 }
 
