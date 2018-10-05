@@ -14,6 +14,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import HourlyWeatherSerializer, WeatherSerializer
 from highcharts.views import HighChartsMultiAxesView
 from .models import WeatherTwoWeeks, City, HourlyWeather
+from .tasks import two_week_weather_task, hourly_weather_task
 
 
 # Create your views here.
@@ -48,9 +49,15 @@ def home(request, template='base.html'):
     return redirect('/weather')
 
 
-def weather_site(request, template='weather/weather.html'):
+def weather_site(request, template='weather/weather.html', ):
     """Weather page."""
-    nowTemp = get_obj(City, name='Kiev')
+    try:
+        nowTemp = get_obj(City, name='Kiev')
+    except:
+        two_week_weather_task() 
+        hourly_weather_task()
+    finally:
+        nowTemp = get_obj(City, name='Kiev')     
     return render(request, template, {'nowTemp': nowTemp})
 
 
