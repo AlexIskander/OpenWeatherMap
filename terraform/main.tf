@@ -9,17 +9,7 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
   key_name = "${aws_key_pair.work_key.key_name}"
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum install git -y
-              yum install python-pip -y
-              mkdir /var/www/
-              git clone https://github.com/AlexIskander/OpenWeatherMap
-              cd OpenWeatherMap
-              pip install -r requirements.txt
-              python manage.py migrate   
-              nohup python manage.py runserver 0.0.0.0:"${var.server_port}" &
-              EOF
+  user_data = "${file("/opt/projects/secrets/prepare_env.sh")}"
 
   tags {
     name = "terraform-example"
